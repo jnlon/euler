@@ -12,7 +12,7 @@
 
 (define (make-abc a b c)
   (let ((s (+ a b c)))
-    (if (and (< s *MAX*) )
+    (if (< s *MAX*)
       (list s a b c)
       #f)))
 
