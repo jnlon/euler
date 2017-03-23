@@ -1,0 +1,34 @@
+- Use 4 bytevectors, need a function to create 2 bytevectors from the diagonal.
+
+- Observation: The horizontal 4 rows can contain anything, the only constraint
+  is the diagonal rows. So, we could pick the diagonal rows first, then fill in
+  the remaining without worrying about any tricky constraints. Then each row
+  would just have to satisfy being the same sum as what we are looking at.
+
+  General algorithm:
+  - Generate a list from combinations of '(0 0 0 0) to '(9 9 9 9)
+    - there are 10,000 of them
+  - Iterate through every possible combination, picking 4 each time
+    - Check to see if the 4 are valid.
+
+  - Strategies for recursion:
+    - We basically need an i-value for accessing something in each pool
+  - wait...
+    - We just generate a list of indices, from (0 0 0 0) to (10000 10000 10000
+      10000)... which would be humongous.
+      - We need to through everything basically.
+
+
+  - At each 'level' (there are 6 levels, one for each row)
+
+  ...
+
+  - Wait, we can easily eliminate bogus combinations if we first pick a sum,
+    (1..36), filter out the ones that don't add to that, then we can play with
+    our smaller pool of numbers. Then, pre-generating a list of indices makes
+    more sense (it would be feasible ram-wise!)
+
+
+  - Only problem, is that we would have to generalize our product function.
+    That should be doable, it but it would be like 80% of the work here.
+
